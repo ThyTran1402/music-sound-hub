@@ -2,9 +2,9 @@
 
 Submitted by: **Thy Tran**
 
-About this web app: **App description here**
+About this web app: **Music Sound Hub helps students discover live music around their campus. Browse a curated list of upcoming concerts, open mic nights, and festivals, filter by genre, ticket price, or venue size, and click any card to view a dedicated detail page with full info (artists, date/time, venue, genre, and price). The app is built with an Express backend that serves static HTML/CSS/JS and a JSON API, styled using Pico CSS.**
 
-Time spent: **X** hours
+Time spent: **3** hours
 
 ## Required Features
 
