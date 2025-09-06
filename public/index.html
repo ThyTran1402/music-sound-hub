@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campus Sounds | Find Local Music Events</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Campus Sounds</h1>
+      <p>Discover concerts, open mics, and festivals near your university.</p>
+    </header>
+
+    <main class="container">
+      <section>
+        <form id="filters" role="search">
+          <div class="grid">
+            <label>
+              Genre
+              <select id="genre">
+                <option value="">Any</option>
+                <option>Indie</option>
+                <option>Hip-Hop</option>
+                <option>EDM</option>
+                <option>Acoustic</option>
+                <option>Mixed</option>
+              </select>
+            </label>
+            <label>
+              Max Ticket Price ($)
+              <input id="maxPrice" type="number" min="0" step="1" placeholder="No limit" />
+            </label>
+            <label>
+              Venue Size
+              <select id="venueSize">
+                <option value="">Any</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>Outdoor</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">Apply Filters</button>
+        </form>
+      </section>
+
+      <section>
+        <ul id="events" style="list-style:none; padding:0; display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem;"></ul>
+      </section>
+    </main>
+
+    <footer class="container">
+      <small>Built with vanilla JS and Pico CSS</small>
+    </footer>
+
+    <script src="/scripts/main.js" defer></script>
+  </body>
+  </html>
+
+
+
