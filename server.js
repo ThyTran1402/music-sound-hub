@@ -15,7 +15,7 @@ const events = [
     genre: 'Indie',
     ticketPrice: 12,
     venueSize: 'Medium',
-    image: '/images/indie-night.jpg',
+    image: '/images/indie-night.svg',
     description: 'Chill indie bands and acoustic sets to ease into the weekend.'
   },
   {
@@ -27,7 +27,7 @@ const events = [
     genre: 'Hip-Hop',
     ticketPrice: 15,
     venueSize: 'Large',
-    image: '/images/hiphop-showcase.jpg',
+    image: '/images/hiphop-showcase.svg',
     description: 'Local hip-hop artists battle and perform original tracks.'
   },
   {
@@ -39,7 +39,7 @@ const events = [
     genre: 'Acoustic',
     ticketPrice: 0,
     venueSize: 'Small',
-    image: '/images/open-mic.jpg',
+    image: '/images/open-mic.svg',
     description: 'Showcase your talent—poetry, music, or comedy. Free entry.'
   },
   {
@@ -51,7 +51,7 @@ const events = [
     genre: 'EDM',
     ticketPrice: 25,
     venueSize: 'Large',
-    image: '/images/edm-warehouse.jpg',
+    image: '/images/edm-warehouse.svg',
     description: 'High-energy EDM in an industrial setting. Strobe lights included.'
   },
   {
@@ -63,7 +63,7 @@ const events = [
     genre: 'Mixed',
     ticketPrice: 5,
     venueSize: 'Outdoor',
-    image: '/images/fall-fest.jpg',
+    image: '/images/fall-fest.svg',
     description: 'Outdoor festival with food trucks, art booths, and live acts.'
   }
 ];
