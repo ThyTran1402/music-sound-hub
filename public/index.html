@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Campus Sounds | Find Local Music Events</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header class="container">
@@ -14,7 +15,7 @@
 
     <main class="container">
       <section>
-        <form id="filters" role="search">
+        <form id="filters" role="search" class="filters">
           <div class="grid">
             <label>
               Genre
@@ -47,7 +48,7 @@
       </section>
 
       <section>
-        <ul id="events" style="list-style:none; padding:0; display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem;"></ul>
+        <div id="events" class="card-grid"></div>
       </section>
     </main>
 

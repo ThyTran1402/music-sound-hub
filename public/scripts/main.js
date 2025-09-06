@@ -19,20 +19,18 @@ function renderEvents(container, events) {
   container.innerHTML = events
     .map(
       (e) => `
-      <li>
-        <article>
-          <header>
-            <h3>${e.name}</h3>
-            <small>${formatDateTime(e.datetime)} · ${e.venue}</small>
-          </header>
-          <img src="${e.image}" alt="${e.name}" style="width:100%;height:160px;object-fit:cover;border-radius:8px;" />
+      <div class="card">
+        <img src="${e.image}" alt="${e.name}" />
+        <div class="card-body">
+          <div class="card-title">${e.name}</div>
+          <p class="card-meta">${formatDateTime(e.datetime)} · ${e.venue}</p>
           <p><strong>Artists:</strong> ${e.artists.join(', ')}</p>
           <p><strong>Genre:</strong> ${e.genre} · <strong>Price:</strong> ${formatCurrency(e.ticketPrice)} · <strong>Size:</strong> ${e.venueSize}</p>
-          <footer>
+          <div class="card-footer">
             <a href="/events/${e.id}" role="button">View details</a>
-          </footer>
-        </article>
-      </li>`
+          </div>
+        </div>
+      </div>`
     )
     .join('');
 }
