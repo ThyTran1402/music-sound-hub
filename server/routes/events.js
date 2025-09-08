@@ -1,21 +1,28 @@
 const { Router } = require('express');
-const { events } = require('../data/events');
+const { pool } = require('../config/db');
 
 const router = Router();
 
-router.get('/events', (req, res) => {
+router.get('/events', async (req, res) => {
   const { genre, maxPrice, venueSize } = req.query;
-  let filtered = [...events];
-  if (genre) filtered = filtered.filter((e) => e.genre.toLowerCase() === String(genre).toLowerCase());
-  if (maxPrice) filtered = filtered.filter((e) => Number(e.ticketPrice) <= Number(maxPrice));
-  if (venueSize) filtered = filtered.filter((e) => e.venueSize.toLowerCase() === String(venueSize).toLowerCase());
-  res.json(filtered);
+  const clauses = [];
+  const params = [];
+  if (genre) { params.push(genre); clauses.push(`lower(genre)=lower($${params.length})`); }
+  if (maxPrice) { params.push(Number(maxPrice)); clauses.push(`ticket_price <= $${params.length}`); }
+  if (venueSize) { params.push(venueSize); clauses.push(`lower(venue_size)=lower($${params.length})`); }
+  const where = clauses.length ? `where ${clauses.join(' and ')}` : '';
+  const sql = `select id,name,artists,datetime,venue,genre,ticket_price as "ticketPrice",venue_size as "venueSize",image,description from events ${where} order by datetime asc`;
+  const { rows } = await pool.query(sql, params);
+  res.json(rows);
 });
 
-router.get('/events/:id', (req, res) => {
-  const event = events.find((e) => e.id === req.params.id);
-  if (!event) return res.status(404).json({ error: 'Event not found' });
-  res.json(event);
+router.get('/events/:id', async (req, res) => {
+  const { rows } = await pool.query(
+    `select id,name,artists,datetime,venue,genre,ticket_price as "ticketPrice",venue_size as "venueSize",image,description from events where id=$1`,
+    [req.params.id]
+  );
+  if (!rows.length) return res.status(404).json({ error: 'Event not found' });
+  res.json(rows[0]);
 });
 
 module.exports = router;
