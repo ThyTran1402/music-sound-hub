@@ -30,7 +30,7 @@ module.exports = router;
 router.get('/locations', async (_req, res) => {
   const sql = `
     select location_slug as slug,
-           coalesce(location_name, location_slug) as name,
+           coalesce(min(location_name), location_slug) as name,
            min(lat) as lat,
            min(lng) as lng,
            count(*) as count
