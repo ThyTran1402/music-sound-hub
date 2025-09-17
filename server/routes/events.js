@@ -26,5 +26,28 @@ router.get('/events/:id', async (req, res) => {
 });
 
 module.exports = router;
+// Additional routes for locations
+router.get('/locations', async (_req, res) => {
+  const sql = `
+    select location_slug as slug,
+           coalesce(location_name, location_slug) as name,
+           min(lat) as lat,
+           min(lng) as lng,
+           count(*) as count
+    from events
+    where location_slug is not null
+    group by location_slug
+    order by name asc`;
+  const { rows } = await pool.query(sql);
+  res.json(rows);
+});
+
+router.get('/locations/:slug/events', async (req, res) => {
+  const { rows } = await pool.query(
+    `select id,name,artists,datetime,venue,genre,ticket_price as "ticketPrice",venue_size as "venueSize",image,description,location_slug as "locationSlug", location_name as "locationName" from events where location_slug=$1 order by datetime asc`,
+    [req.params.slug]
+  );
+  res.json(rows);
+});
 
 
